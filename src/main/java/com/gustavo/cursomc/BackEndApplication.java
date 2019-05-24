@@ -1,8 +1,12 @@
 package com.gustavo.cursomc;
 
 import com.gustavo.cursomc.domain.Categoria;
+import com.gustavo.cursomc.domain.Cidade;
+import com.gustavo.cursomc.domain.Estado;
 import com.gustavo.cursomc.domain.Produto;
 import com.gustavo.cursomc.repositories.CategoriaRepository;
+import com.gustavo.cursomc.repositories.CidadeRepository;
+import com.gustavo.cursomc.repositories.EstadoRepository;
 import com.gustavo.cursomc.repositories.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,9 +20,12 @@ public class BackEndApplication implements CommandLineRunner {
 
 	@Autowired
 	CategoriaRepository categoriaRepository;
-
 	@Autowired
 	ProdutoRepository produtoRepository;
+	@Autowired
+	EstadoRepository estadoRepository;
+	@Autowired
+	CidadeRepository cidadeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackEndApplication.class, args);
@@ -42,5 +49,18 @@ public class BackEndApplication implements CommandLineRunner {
 
 		categoriaRepository.save(Arrays.asList(cat1,cat2));
 		produtoRepository.save(Arrays.asList(p1, p2, p3));
+
+		Estado est1 = new Estado(null, "Minas Gerais");
+		Estado est2 = new Estado(null, "São Paulo");
+
+		Cidade c1 = new Cidade(null, "Uberlândia", est1);
+		Cidade c2 = new Cidade(null, "São Paulo", est2);
+		Cidade c3 = new Cidade(null, "Campinas", est2);
+
+		est1.getCidades().addAll(Arrays.asList(c1));
+		est2.getCidades().addAll(Arrays.asList(c2, c3));
+
+		estadoRepository.save(Arrays.asList(est1, est2));
+		cidadeRepository.save(Arrays.asList(c1, c2, c3));
 	}
 }
