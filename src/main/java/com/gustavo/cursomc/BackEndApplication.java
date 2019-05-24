@@ -1,7 +1,7 @@
 package com.gustavo.cursomc;
 
 import com.gustavo.cursomc.domain.*;
-import com.gustavo.cursomc.domain.enums.Endereco;
+import com.gustavo.cursomc.domain.Endereco;
 import com.gustavo.cursomc.domain.enums.TipoCliente;
 import com.gustavo.cursomc.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;

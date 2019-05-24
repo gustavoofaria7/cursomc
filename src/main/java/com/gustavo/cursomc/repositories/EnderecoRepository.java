@@ -1,7 +1,6 @@
 package com.gustavo.cursomc.repositories;
 
-import com.gustavo.cursomc.domain.Cliente;
-import com.gustavo.cursomc.domain.enums.Endereco;
+import com.gustavo.cursomc.domain.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
