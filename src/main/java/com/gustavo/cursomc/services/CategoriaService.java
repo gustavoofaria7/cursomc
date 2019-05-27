@@ -1,6 +1,7 @@
 package com.gustavo.cursomc.services;
 
 import com.gustavo.cursomc.domain.Categoria;
+import com.gustavo.cursomc.dto.CategoriaDTO;
 import com.gustavo.cursomc.repositories.CategoriaRepository;
 import com.gustavo.cursomc.services.exceptions.DataIntegrityException;
 import com.gustavo.cursomc.services.exceptions.ObjectNotFoundException;
@@ -56,5 +57,9 @@ public class CategoriaService {
     public Page<Categoria> pageController(Integer page, Integer linesPerPage, String orderBy, String direction) {
         PageRequest pageRequest = new PageRequest(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return repo.findAll(pageRequest);
+    }
+
+    public Categoria fromDTO(CategoriaDTO objDto) {
+        return new Categoria(objDto.getId(), objDto.getNome());
     }
 }
